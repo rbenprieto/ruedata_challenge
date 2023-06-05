@@ -22,7 +22,7 @@ class FileUploadView(APIView):
         file = request.FILES.get("keylog")
 
         if file:
-            #Valida el tipo de archivo
+            # Valida el tipo de archivo
             if not file.name.lower().endswith(".txt"):
                 raise ValidationError({"error": "This file must be a txt file (.txt)"})
 
@@ -44,7 +44,7 @@ class FileUploadView(APIView):
                     }
                 )
 
-            #Usa el útil de forma recursiva para obtener el key de login más corto posible
+            # Usa el útil de forma recursiva para obtener el key de login más corto posible
             key: str = find_shortest_possible_key(selected_items)
             return Response(
                 {
